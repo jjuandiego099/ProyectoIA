@@ -11,7 +11,7 @@ archivo = st.file_uploader("Sube el archivo scaler.joblib")
 if archivo:
     scaler = joblib.load(archivo)
   # Verifica la ruta absoluta
-scaler = joblib.load("scaler.joblib")
+# scaler = joblib.load("scaler.joblib")
 model = joblib.load("random_forest_balanced.joblib")
 
 
