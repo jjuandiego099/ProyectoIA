@@ -4,7 +4,13 @@ import joblib
 import numpy as np
 
 
+import os
+ruta_absoluta = os.path.join(os.path.dirname(__file__), 'scaler.joblib')
 
+archivo = st.file_uploader("Sube el archivo scaler.joblib")
+if archivo:
+    scaler = joblib.load(archivo)
+  # Verifica la ruta absoluta
 scaler = joblib.load("scaler.joblib")
 model = joblib.load("random_forest_balanced.joblib")
 
