@@ -2,11 +2,18 @@ import streamlit as st
 import pandas as pd
 import joblib
 import numpy as np
+import os
+from joblib import load
+
+ruta = os.path.join(os.path.dirname(__file__), "scaler.joblib")
+ruta2 = os.path.join(os.path.dirname(__file__), "random_forest_balanced.joblib")
+scaler = load(ruta)
+model = load(ruta2)
 
 
 
-scaler = joblib.load("scaler.joblib")
-model = joblib.load("random_forest_balanced.joblib")
+# scaler = joblib.load("scaler.joblib")
+# model = joblib.load("random_forest_balanced.joblib")
 
 
 # Título y subtítulo
