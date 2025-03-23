@@ -3,23 +3,10 @@ import pandas as pd
 import joblib
 import numpy as np
 
-import os
-import joblib
-
-# Verifica si el archivo existe
-if os.path.exists("scaler.joblib"):
-    print("El archivo 'scaler.joblib' existe.")
-    scaler = joblib.load("Modelo/scaler.joblib")
-else:
-    print("El archivo 'scaler.joblib' no se encuentra en la ruta especificada.")
 
 
-# Verifica si el archivo existe
-if os.path.exists("random_forest_balanced.joblib"):
-    print("El archivo 'random_forest_balanced.joblib' existe.")
-    model = joblib.load("Modelo/random_forest_balanced.joblib")
-else:
-    print("El archivo 'random_forest_balanced.joblib' no se encuentra en la ruta especificada.")
+scaler = joblib.load("scaler.joblib")
+model = joblib.load("random_forest_balanced.joblib")
 
 
 # Título y subtítulo
