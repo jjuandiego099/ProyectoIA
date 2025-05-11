@@ -1,13 +1,16 @@
+# api.py
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
-import numpy as np
 import pandas as pd
 import os
 
 # Cargar modelo y scaler
-scaler = joblib.load("scaler.joblib")
-model = joblib.load("random_forest_balanced.joblib")
+ruta = os.path.join(os.path.dirname(__file__), "scaler.joblib")
+ruta2 = os.path.join(os.path.dirname(__file__), "random_forest_balanced.joblib")
+scaler = joblib.load(ruta)
+model = joblib.load(ruta2)
 
 # Lista esperada de columnas (orden correcto)
 expected_order = list(model.feature_names_in_)
@@ -34,8 +37,11 @@ class PatientData(BaseModel):
     Family_History: int
     Smoking_Family_History: int
     Stress_Immune: int
+@app.get("/")
+def root():
+    return {"message": "API de predicción de cáncer de pulmón funcionando correctamente"}
 
-@app.post("/predict")
+@app.post("/app")
 def predict(data: PatientData):
     # Convertir entrada a DataFrame
     input_dict = data.dict()
